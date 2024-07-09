@@ -7,5 +7,5 @@ sudo ufw allow 'Nginx HTTP'
 sudo chown -R $USER:$USER /var/www
 sudo chmod -R 755 /var/www
 touch /var/www/html/index.html
-echo "Hello World" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 sudo service nginx restart
