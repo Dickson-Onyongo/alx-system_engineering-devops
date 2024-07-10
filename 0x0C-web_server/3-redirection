@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#install and configure the nginx web server so that the /redirect_me is redirecting to another page.
+
+apt-get update
+apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo chown -R $USER:$USER /var/www
+sudo chmod -R 755 /var/www
+touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.masta-solutions.net"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
+
